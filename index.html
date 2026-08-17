@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPScaleAI | La IA que trabaja mientras tú vendes</title>
+<meta name="description" content="IPScaleAI diseña agentes de IA y automatizaciones con n8n para negocios reales: atención multicanal en WhatsApp, Instagram y email, captación de leads, agendado automático de citas y derivación a humano. Instalación desde 450€ + mantenimiento desde 149€/mes.">
+<meta name="keywords" content="agentes de IA, automatización n8n, atención al cliente WhatsApp, agendado automático de citas, agentes de IA para negocios, chatbot IA negocios, precio agente IA">
+<meta property="og:title" content="IPScaleAI | La IA que trabaja mientras tú vendes">
+<meta property="og:description" content="Agentes de IA y automatizaciones para atención al cliente, captación de leads y agendado de citas. Instalación desde 450€ + mantenimiento desde 149€/mes.">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/png" href="ipscaleai-favicon-64.png">
+<link rel="apple-touch-icon" href="ipscaleai-favicon-256.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-primary:#0B0C0F;
+  --bg-surface:#16181D;
+  --bg-surface-raised:#1D2027;
+  --text-primary:#F5F6F8;
+  --text-secondary:#8A8F98;
+  --text-muted:#5A5F68;
+  --accent-primary:#22D3EE;
+  --accent-primary-hover:#67E8F9;
+  --accent-secondary:#FF5A36;
+  --accent-secondary-hover:#FF7A5C;
+  --border:#2A2D34;
+  --border-strong:#3B3F48;
+  --chrome:#C4C9D1;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg-primary);
+  color:var(--text-primary);
+  font-family:'Inter',sans-serif;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+body.menu-open{overflow:hidden;}
+
+/* SCROLL PROGRESS BAR */
+.scroll-progress{
+  position:fixed;top:0;left:0;height:3px;width:0%;
+  background:linear-gradient(90deg, var(--accent-secondary), var(--accent-primary));
+  z-index:300;box-shadow:0 0 10px rgba(34,211,238,0.6);
+  transition:width .08s linear;
+}
+
+/* CURSOR SPOTLIGHT */
+.spotlight{
+  position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(500px circle at var(--mx,50%) var(--my,20%), rgba(34,211,238,0.08), transparent 60%);
+  transition:background .1s ease;
+}
+
+/* tilt helper */
+.tilt{transform-style:preserve-3d;will-change:transform;}
+h1,h2,h3,h4{
+  font-family:'Space Grotesk',sans-serif;
+  font-weight:800;
+  letter-spacing:-0.02em;
+  line-height:1.1;
+}
+a{color:inherit;text-decoration:none;}
+.container{max-width:1180px;margin:0 auto;padding:0 24px;}
+section{position:relative;}
+
+/* speed line decorative bg */
+.speed-lines{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;}
+.speed-lines span{
+  position:absolute;
+  height:1px;
+  background:linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+  opacity:0.15;
+  transform:rotate(-8deg);
+  animation:driftLine 7s ease-in-out infinite;
+}
+.speed-lines span.orange{background:linear-gradient(90deg, transparent, var(--accent-secondary), transparent);}
+.speed-lines span:nth-child(1){animation-delay:0s;}
+.speed-lines span:nth-child(2){animation-delay:1.2s;}
+.speed-lines span:nth-child(3){animation-delay:2.4s;}
+.speed-lines span:nth-child(4){animation-delay:3.6s;}
+@keyframes driftLine{
+  0%{transform:rotate(-8deg) translateX(-30px);opacity:0.08;}
+  50%{transform:rotate(-8deg) translateX(30px);opacity:0.22;}
+  100%{transform:rotate(-8deg) translateX(-30px);opacity:0.08;}
+}
+
+/* grid + glow bg for hero */
+.grid-bg{
+  position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(34,211,238,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34,211,238,0.05) 1px, transparent 1px);
+  background-size:44px 44px;
+  mask-image:radial-gradient(ellipse 70% 60% at 50% 20%, black 30%, transparent 90%);
+}
+.glow-orb{
+  position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0;
+  animation:pulseGlow 8s ease-in-out infinite alternate;
+}
+@keyframes pulseGlow{
+  0%{transform:scale(1);opacity:.35;}
+  100%{transform:scale(1.15);opacity:.55;}
+}
+
+/* NAV — minimal luxury bar */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:250;
+  background:transparent;
+  backdrop-filter:none;
+  border-bottom:1px solid transparent;
+  transition:box-shadow .3s ease, border-color .3s ease, background .35s ease, backdrop-filter .35s ease, transform .35s ease;
+}
+header.scrolled{
+  background:rgba(11,12,15,0.75);backdrop-filter:blur(14px);
+  box-shadow:0 10px 30px rgba(0,0,0,0.3);border-bottom-color:var(--border);
+}
+header.nav-hidden{transform:translateY(-100%);}
+nav{
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+  padding:22px 24px;max-width:1400px;margin:0 auto;transition:padding .3s ease;
+}
+header.scrolled nav{padding:15px 24px;}
+.menu-toggle{
+  justify-self:start;display:flex;align-items:center;gap:10px;
+  background:none;border:none;color:var(--text-primary);cursor:pointer;
+  font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+}
+.menu-toggle .bars{display:flex;flex-direction:column;gap:4px;width:22px;}
+.menu-toggle .bars span{display:block;height:1.5px;width:100%;background:var(--text-primary);transition:transform .3s ease, opacity .3s ease, width .3s ease;}
+.menu-toggle:hover .bars span{background:var(--accent-primary);}
+.menu-toggle.is-open .bars span:nth-child(1){transform:translateY(5.5px) rotate(45deg);}
+.menu-toggle.is-open .bars span:nth-child(2){opacity:0;}
+.menu-toggle.is-open .bars span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg);}
+.logo{justify-self:center;display:flex;align-items:center;gap:10px;font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:24px;letter-spacing:.02em;}
+.logo-mark{height:46px;width:auto;flex-shrink:0;transition:transform .3s ease;filter:drop-shadow(0 0 6px rgba(34,211,238,0.25));}
+.logo:hover .logo-mark{transform:rotate(-6deg) scale(1.08);}
+.nav-cta{
+  justify-self:end;
+  background:var(--accent-primary);color:var(--bg-primary);
+  padding:10px 20px;border-radius:2px;font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+  transition:background .2s ease, transform .2s ease;white-space:nowrap;
+}
+.nav-cta:hover{background:var(--accent-primary-hover);transform:translateY(-1px);}
+
+/* FULLSCREEN MENU */
+.fullscreen-menu{
+  position:fixed;inset:0;z-index:240;background:var(--bg-primary);
+  display:flex;flex-direction:column;justify-content:center;padding:100px 8vw 60px;
+  opacity:0;pointer-events:none;transform:translateY(-14px);
+  transition:opacity .45s ease, transform .45s ease;
+}
+.fullscreen-menu.open{opacity:1;pointer-events:auto;transform:translateY(0);}
+.fs-links{display:flex;flex-direction:column;gap:2px;}
+.fs-links a{
+  display:flex;align-items:baseline;gap:22px;
+  padding:18px 0;border-top:1px solid var(--border);
+  font-family:'Space Grotesk';font-weight:800;font-size:clamp(28px,5.4vw,58px);
+  text-transform:uppercase;letter-spacing:-0.01em;color:var(--text-primary);
+  opacity:0;transform:translateX(-16px);transition:opacity .4s ease, transform .4s ease, color .25s ease;
+}
+.fullscreen-menu.open .fs-links a{opacity:1;transform:translateX(0);}
+.fs-links a:nth-child(1){transition-delay:.05s;}
+.fs-links a:nth-child(2){transition-delay:.1s;}
+.fs-links a:nth-child(3){transition-delay:.15s;}
+.fs-links a:nth-child(4){transition-delay:.2s;}
+.fs-links a:nth-child(5){transition-delay:.25s;}
+.fs-links a:nth-child(6){transition-delay:.3s;}
+.fs-links a:last-child{border-bottom:1px solid var(--border);}
+.fs-links a .fs-num{font-family:'Inter';font-weight:600;font-size:13px;color:var(--accent-secondary);letter-spacing:.1em;}
+.fs-links a:hover{color:var(--accent-primary);}
+.fs-links a.active{color:var(--accent-primary);}
+.fs-footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-top:48px;color:var(--text-secondary);font-size:13px;}
+.fs-footer a{color:var(--text-secondary);}
+.fs-footer a:hover{color:var(--accent-primary);}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;align-items:center;
+  padding:140px 0 100px;
+  position:relative;overflow:hidden;
+  border-bottom:1px solid var(--border);
+  background-image:
+    linear-gradient(180deg, rgba(11,12,15,0.82), rgba(11,12,15,0.94) 60%, var(--bg-primary) 100%),
+    url('ipscaleai-logo-full.png');
+  background-size:cover;
+  background-position:center 35%;
+  background-repeat:no-repeat;
+}
+.scroll-cue{
+  position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:8px;z-index:1;
+  color:var(--text-muted);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+}
+.scroll-cue svg{animation:scrollBounce 1.8s ease-in-out infinite;}
+@keyframes scrollBounce{
+  0%,100%{transform:translateY(0);opacity:.5;}
+  50%{transform:translateY(8px);opacity:1;}
+}
+
+/* editorial big background numerals */
+.section-num{
+  position:absolute;top:-10px;left:50%;transform:translateX(-50%);
+  font-family:'Space Grotesk',sans-serif;font-weight:800;
+  font-size:clamp(120px,20vw,280px);line-height:1;
+  color:rgba(245,246,248,0.025);
+  z-index:0;pointer-events:none;user-select:none;white-space:nowrap;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--bg-surface);border:1px solid var(--border-strong);
+  padding:6px 14px;border-radius:100px;font-size:13px;color:var(--accent-primary);
+  margin-bottom:24px;font-weight:600;position:relative;z-index:1;
+}
+.hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent-primary);box-shadow:0 0 8px var(--accent-primary);animation:blink 1.6s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.3;}}
+.hero-inner{position:relative;z-index:1;}
+.hero h1{font-size:clamp(36px,5.8vw,68px);max-width:860px;margin-bottom:22px;}
+.hero h1 span{color:var(--accent-primary);position:relative;}
+.hero p.lead{font-size:19px;color:var(--text-secondary);max-width:600px;margin-bottom:36px;}
+.hero-ctas{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:56px;}
+.btn-primary{
+  background:var(--accent-primary);color:var(--bg-primary);
+  padding:15px 28px;border-radius:6px;font-weight:700;font-size:15px;
+  display:inline-flex;align-items:center;gap:8px;
+  transition:transform .15s ease, background .2s ease, box-shadow .2s ease;border:none;cursor:pointer;
+}
+.btn-primary:hover{background:var(--accent-primary-hover);transform:translateY(-2px);box-shadow:0 8px 24px rgba(34,211,238,0.25);}
+.btn-primary.glow-pulse{animation:btnPulse 2.4s ease-in-out infinite;}
+@keyframes btnPulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(34,211,238,0.35);}
+  50%{box-shadow:0 0 0 10px rgba(34,211,238,0);}
+}
+.btn-secondary{
+  border:1px solid var(--border-strong);color:var(--text-primary);
+  padding:15px 28px;border-radius:6px;font-weight:600;font-size:15px;
+  transition:border-color .2s ease, color .2s ease;
+}
+.btn-secondary:hover{border-color:var(--accent-secondary);color:var(--accent-secondary);}
+.hero-stats{display:flex;gap:48px;flex-wrap:wrap;padding-top:36px;border-top:1px solid var(--border);}
+.hero-stats div strong{display:block;font-family:'Space Grotesk';font-size:30px;color:var(--accent-primary);font-weight:800;}
+.hero-stats div strong .count{font-size:inherit;color:inherit;font-family:inherit;font-weight:inherit;}
+.hero-stats div > span{font-size:13px;color:var(--text-secondary);}
+
+/* SERVICES */
+.section-head{text-align:center;max-width:640px;margin:0 auto 56px;position:relative;z-index:1;}
+.eyebrow{
+  color:var(--accent-secondary);font-weight:700;font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+  margin-bottom:16px;display:inline-flex;align-items:center;gap:10px;
+}
+.eyebrow::before{content:'';width:28px;height:1px;background:var(--accent-secondary);}
+.section-head h2{font-size:clamp(30px,4.4vw,46px);margin-bottom:16px;}
+.section-head p{color:var(--text-secondary);font-size:16px;}
+
+.services{padding:110px 0;}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.card{
+  background:var(--bg-surface);border:1px solid var(--border);
+  border-radius:12px;padding:32px 26px;position:relative;overflow:hidden;
+  transition:transform .25s ease, border-color .25s ease, background .25s ease, box-shadow .25s ease;
+}
+.card:hover{transform:translateY(-6px);border-color:var(--accent-primary);background:var(--bg-surface-raised);box-shadow:0 16px 40px rgba(0,0,0,0.35);}
+.card .icon{
+  width:46px;height:46px;border-radius:10px;
+  background:rgba(34,211,238,0.1);
+  display:flex;align-items:center;justify-content:center;margin-bottom:20px;
+  color:var(--accent-primary);
+}
+.card h3{font-size:19px;margin-bottom:10px;}
+.card p{color:var(--text-secondary);font-size:14.5px;}
+.card .tag{display:inline-block;margin-top:14px;font-size:12px;color:var(--accent-secondary);font-weight:600;}
+
+/* HOW IT WORKS */
+.how{padding:110px 0;background:var(--bg-surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;position:relative;}
+.steps::before{
+  content:'';position:absolute;top:26px;left:12%;right:12%;height:1px;
+  background:repeating-linear-gradient(90deg, var(--border-strong) 0 8px, transparent 8px 16px);
+  z-index:0;
+}
+.step{position:relative;z-index:1;}
+.step-num{
+  width:52px;height:52px;border-radius:50%;
+  background:var(--bg-primary);border:2px solid var(--accent-primary);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Space Grotesk';font-weight:800;font-size:19px;color:var(--accent-primary);
+  margin-bottom:18px;
+}
+.step h4{font-size:16px;margin-bottom:8px;}
+.step p{font-size:14px;color:var(--text-secondary);}
+
+/* CASE STUDY */
+.case{padding:110px 0;}
+.case-wrap{
+  background:var(--bg-surface);border:1px solid var(--border);border-radius:16px;
+  display:grid;grid-template-columns:1.1fr 1fr;overflow:hidden;position:relative;z-index:1;
+}
+.case-content{padding:52px;}
+.case-content .eyebrow{margin-bottom:16px;}
+.case-content h3{font-size:30px;margin-bottom:16px;}
+.case-content p{color:var(--text-secondary);margin-bottom:28px;font-size:15px;}
+.case-results{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:28px;}
+.case-results div strong{display:block;font-family:'Space Grotesk';font-size:26px;color:var(--accent-primary);font-weight:800;}
+.case-results div strong .count{font-size:inherit;color:inherit;font-family:inherit;font-weight:inherit;}
+.case-results div > span{font-size:13px;color:var(--text-secondary);}
+.case-visual{
+  background:linear-gradient(160deg,#12141a,#0B0C0F);
+  padding:40px;display:flex;align-items:center;justify-content:center;position:relative;
+  border-left:1px solid var(--border);
+}
+.chat-mock{
+  background:var(--bg-primary);border:1px solid var(--border-strong);
+  border-radius:14px;padding:18px;width:100%;max-width:300px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.4);
+  animation:floatMock 4.5s ease-in-out infinite;
+}
+@keyframes floatMock{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-8px);}
+}
+.chat-mock .chat-head{display:flex;align-items:center;gap:10px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border);}
+.chat-mock .dot{width:8px;height:8px;border-radius:50%;background:#3ddc84;box-shadow:0 0 6px #3ddc84;animation:blink 1.6s ease-in-out infinite;}
+.bubble{
+  padding:10px 14px;border-radius:10px;font-size:13px;margin-bottom:10px;max-width:85%;
+  opacity:0;transform:translateY(10px) scale(.97);
+  transition:opacity .35s ease, transform .35s ease;
+}
+.bubble.show{opacity:1;transform:translateY(0) scale(1);}
+.bubble.in{background:var(--bg-surface-raised);border:1px solid var(--border);}
+.bubble.out{background:rgba(34,211,238,0.12);border:1px solid rgba(34,211,238,0.3);margin-left:auto;color:var(--accent-primary);}
+.typing-indicator{
+  display:none;align-items:center;gap:4px;
+  background:var(--bg-surface-raised);border:1px solid var(--border);
+  border-radius:10px;padding:11px 14px;margin-left:auto;margin-bottom:10px;width:fit-content;
+}
+.typing-indicator.show{display:flex;}
+.typing-indicator span{
+  width:6px;height:6px;border-radius:50%;background:var(--accent-primary);
+  animation:typingBounce 1s ease-in-out infinite;
+}
+.typing-indicator span:nth-child(2){animation-delay:.15s;}
+.typing-indicator span:nth-child(3){animation-delay:.3s;}
+@keyframes typingBounce{
+  0%,60%,100%{transform:translateY(0);opacity:.5;}
+  30%{transform:translateY(-4px);opacity:1;}
+}
+
+/* STATEMENT PANEL */
+.statement{
+  min-height:80vh;display:flex;align-items:center;justify-content:center;text-align:center;
+  position:relative;overflow:hidden;border-bottom:1px solid var(--border);
+  background:radial-gradient(ellipse 60% 60% at 50% 50%, rgba(34,211,238,0.06), transparent 70%);
+}
+.statement .container{position:relative;z-index:1;}
+.statement h2{
+  font-size:clamp(32px,6vw,72px);max-width:920px;margin:0 auto;line-height:1.15;
+}
+.statement h2 .hl{color:var(--accent-primary);}
+.statement h2 .hl2{color:var(--accent-secondary);}
+.statement p{color:var(--text-secondary);font-size:17px;max-width:560px;margin:26px auto 0;}
+
+/* SECTORS */
+.sectors{padding:110px 0;background:var(--bg-surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;}
+.sector-marquee{
+  width:100%;overflow:hidden;
+  mask-image:linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image:linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+}
+.sector-track{display:flex;gap:14px;width:max-content;animation:marquee 26s linear infinite;}
+.sector-marquee:hover .sector-track{animation-play-state:paused;}
+@keyframes marquee{
+  from{transform:translateX(0);}
+  to{transform:translateX(-50%);}
+}
+.sector-chip{
+  background:var(--bg-primary);border:1px solid var(--border);border-radius:10px;
+  padding:22px 26px;text-align:center;font-size:13.5px;font-weight:600;color:var(--text-secondary);
+  transition:border-color .2s, color .2s, transform .2s;white-space:nowrap;flex-shrink:0;
+}
+.sector-chip.active{border-color:var(--accent-secondary);color:var(--text-primary);}
+.sector-chip:hover{border-color:var(--accent-primary);color:var(--text-primary);transform:translateY(-3px);}
+
+/* PRICING */
+.pricing{padding:120px 0;position:relative;}
+.pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;align-items:stretch;position:relative;z-index:1;}
+.plan{
+  background:var(--bg-surface);border:1px solid var(--border);border-radius:14px;
+  padding:34px 26px;display:flex;flex-direction:column;position:relative;
+  transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+.plan:hover{transform:translateY(-6px);border-color:var(--border-strong);}
+.plan.popular{
+  background:linear-gradient(180deg, rgba(34,211,238,0.06), var(--bg-surface) 40%);
+  border:1px solid var(--accent-primary);
+  box-shadow:0 0 0 1px rgba(34,211,238,0.15), 0 24px 60px rgba(34,211,238,0.12);
+  transform:scale(1.04);
+}
+.plan.popular:hover{transform:scale(1.04) translateY(-6px);}
+.plan-badge{
+  position:absolute;top:-13px;left:50%;transform:translateX(-50%);
+  background:var(--accent-primary);color:var(--bg-primary);
+  font-size:11.5px;font-weight:800;padding:5px 14px;border-radius:100px;
+  text-transform:uppercase;letter-spacing:.05em;white-space:nowrap;
+}
+.plan-name{font-family:'Space Grotesk';font-weight:800;font-size:20px;margin-bottom:6px;}
+.plan-tagline{font-size:13px;color:var(--text-secondary);margin-bottom:22px;min-height:34px;}
+.plan-price{display:flex;align-items:baseline;gap:6px;margin-bottom:2px;}
+.plan-price .amount{font-family:'Space Grotesk';font-size:34px;font-weight:800;color:var(--text-primary);}
+.plan-price .amount.custom{font-size:24px;}
+.plan-price .period{font-size:12.5px;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;}
+.plan-maintenance{
+  display:flex;align-items:baseline;gap:6px;margin-bottom:14px;
+  padding-top:10px;border-top:1px dashed var(--border-strong);
+}
+.plan-maintenance .m-amount{font-family:'Space Grotesk';font-size:18px;font-weight:800;color:var(--accent-primary);}
+.plan-maintenance .m-label{font-size:12px;color:var(--text-secondary);}
+.plan-note{font-size:12.5px;color:var(--text-muted);margin-bottom:26px;}
+.plan-features{list-style:none;margin-bottom:28px;flex-grow:1;}
+.plan-features li{
+  display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--text-secondary);
+  padding:9px 0;border-top:1px solid var(--border);
+}
+.plan-features li:first-child{border-top:none;}
+.plan-features li svg{flex-shrink:0;margin-top:2px;color:var(--accent-primary);}
+.plan-features li.dim svg{color:var(--text-muted);}
+.plan-features li.dim{color:var(--text-muted);}
+.plan .btn-primary,.plan .btn-secondary{width:100%;justify-content:center;}
+.plan.custom{background:var(--bg-surface-raised);border:1px dashed var(--border-strong);}
+.pricing-foot{text-align:center;margin-top:36px;color:var(--text-secondary);font-size:14px;position:relative;z-index:1;}
+.pricing-foot strong{color:var(--accent-secondary);}
+
+/* SERVICES DETAIL */
+.services-detail{padding:110px 0;}
+.detail-row{
+  display:grid;grid-template-columns:80px 1fr;gap:28px;
+  padding:36px 0;border-top:1px solid var(--border);
+}
+.detail-row:last-child{border-bottom:1px solid var(--border);}
+.detail-num{font-family:'Space Grotesk';font-size:34px;font-weight:800;color:var(--border-strong);}
+.detail-row h3{font-size:22px;margin-bottom:10px;color:var(--text-primary);}
+.detail-row p{color:var(--text-secondary);font-size:15px;max-width:700px;}
+
+/* ABOUT */
+.about{padding:110px 0;background:var(--bg-surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.about h2{font-size:clamp(26px,4vw,38px);margin-bottom:20px;}
+.about p{color:var(--text-secondary);margin-bottom:16px;font-size:15.5px;}
+.about-values{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.value-box{background:var(--bg-primary);border:1px solid var(--border);border-radius:10px;padding:22px;}
+.value-box strong{display:block;color:var(--accent-primary);font-family:'Space Grotesk';margin-bottom:6px;font-size:15px;}
+.value-box span{font-size:13.5px;color:var(--text-secondary);}
+
+/* CASES LIST */
+.cases-list{padding:110px 0;}
+.case-card{
+  display:grid;grid-template-columns:180px 1fr;gap:28px;align-items:center;
+  background:var(--bg-surface);border:1px solid var(--border);border-radius:12px;
+  padding:28px;margin-bottom:20px;
+}
+.case-card .badge-sector{
+  background:rgba(255,90,54,0.1);color:var(--accent-secondary);
+  font-size:12px;font-weight:700;padding:6px 12px;border-radius:6px;text-align:center;
+}
+.case-card h4{font-size:19px;margin-bottom:8px;}
+.case-card p{color:var(--text-secondary);font-size:14px;}
+.case-card.future{opacity:.5;border-style:dashed;}
+
+/* FAQ */
+.faq{padding:110px 0;background:var(--bg-surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.faq-list{max-width:800px;margin:0 auto;}
+.faq-item{border-bottom:1px solid var(--border);}
+.faq-item summary{
+  list-style:none;cursor:pointer;padding:22px 4px;font-weight:700;font-size:16px;
+  display:flex;justify-content:space-between;align-items:center;gap:16px;
+}
+.faq-item summary::-webkit-details-marker{display:none;}
+.faq-item summary::after{content:'+';font-size:22px;color:var(--accent-primary);font-weight:400;flex-shrink:0;transition:transform .2s;}
+.faq-item[open] summary::after{content:'−';}
+.faq-item p{color:var(--text-secondary);font-size:14.5px;padding:0 4px 22px;max-width:680px;}
+
+/* CONTACT */
+.contact{padding:110px 0;}
+.contact-wrap{
+  display:grid;grid-template-columns:1fr 1fr;gap:0;
+  background:var(--bg-surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;
+}
+.contact-info{padding:52px;border-right:1px solid var(--border);}
+.contact-info h2{font-size:30px;margin-bottom:16px;}
+.contact-info p{color:var(--text-secondary);margin-bottom:28px;font-size:15px;}
+.contact-item{display:flex;align-items:center;gap:12px;margin-bottom:16px;font-size:14.5px;color:var(--text-secondary);}
+.contact-item .ic{color:var(--accent-primary);}
+.contact-form{padding:52px;}
+.field{margin-bottom:18px;}
+.field label{display:block;font-size:13px;color:var(--text-secondary);margin-bottom:7px;font-weight:600;}
+.field input,.field textarea,.field select{
+  width:100%;background:var(--bg-primary);border:1px solid var(--border-strong);
+  border-radius:7px;padding:12px 14px;color:var(--text-primary);font-family:'Inter';font-size:14.5px;
+}
+.field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--accent-primary);}
+.field textarea{resize:vertical;min-height:90px;}
+.form-note{font-size:12.5px;color:var(--text-muted);margin-top:10px;}
+
+/* FOOTER CTA */
+.final-cta{padding:100px 0;text-align:center;position:relative;overflow:hidden;border-top:1px solid var(--border);}
+.final-cta h2{font-size:clamp(28px,5vw,46px);max-width:700px;margin:0 auto 20px;position:relative;z-index:1;}
+.final-cta p{color:var(--text-secondary);margin-bottom:32px;position:relative;z-index:1;}
+.final-cta .hero-ctas{justify-content:center;position:relative;z-index:1;}
+
+footer{border-top:1px solid var(--border);padding:48px 0 100px;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:36px;}
+.footer-grid h5{font-size:13px;color:var(--text-secondary);margin-bottom:14px;text-transform:uppercase;letter-spacing:.08em;}
+.footer-grid ul{list-style:none;}
+.footer-grid li{margin-bottom:10px;font-size:14px;}
+.footer-grid li a{color:var(--text-secondary);}
+.footer-grid li a:hover{color:var(--accent-primary);}
+.footer-bottom{border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;color:var(--text-muted);font-size:13px;flex-wrap:wrap;gap:12px;}
+
+/* floating CTA */
+.float-cta{
+  position:fixed;bottom:22px;right:22px;z-index:150;
+  background:var(--accent-primary);color:var(--bg-primary);
+  padding:14px 20px;border-radius:100px;font-weight:700;font-size:14px;
+  display:flex;align-items:center;gap:8px;box-shadow:0 10px 30px rgba(34,211,238,0.3);
+  transition:transform .2s ease, background .2s ease;
+}
+.float-cta:hover{transform:translateY(-3px);background:var(--accent-primary-hover);}
+
+/* reveal animation */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease;}
+.reveal.show{opacity:1;transform:translateY(0);}
+
+/* responsive */
+@media(max-width:1000px){
+  .pricing-grid{grid-template-columns:repeat(2,1fr);}
+  .plan.popular{transform:none;}
+  .plan.popular:hover{transform:translateY(-6px);}
+}
+@media(max-width:900px){
+  .services-grid{grid-template-columns:repeat(2,1fr);}
+  .steps{grid-template-columns:repeat(2,1fr);}
+  .steps::before{display:none;}
+  .case-wrap,.about-grid,.contact-wrap{grid-template-columns:1fr;}
+  .case-visual{border-left:none;border-top:1px solid var(--border);}
+  .contact-info{border-right:none;border-bottom:1px solid var(--border);}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:480px){
+  .menu-toggle .menu-label{display:none;}
+}
+@media(max-width:560px){
+  .services-grid{grid-template-columns:1fr;}
+  .steps{grid-template-columns:1fr;}
+  .pricing-grid{grid-template-columns:1fr;}
+  .hero-stats{gap:28px;}
+  .case-content,.case-visual,.contact-info,.contact-form{padding:32px 24px;}
+  .detail-row{grid-template-columns:50px 1fr;}
+  .float-cta span{display:none;}
+  .float-cta{padding:16px;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()" aria-label="Abrir menú">
+      <span class="bars"><span></span><span></span><span></span></span>
+      <span class="menu-label">Menú</span>
+    </button>
+    <a href="#home" class="logo">
+      <img src="ipscaleai-icon.png" alt="IPScaleAI" class="logo-mark">
+      IPScale<span style="color:var(--accent-primary)">AI</span>
+    </a>
+    <a href="#contacto" class="nav-cta">Reserva una demo</a>
+  </nav>
+</header>
+
+<div class="fullscreen-menu" id="fsMenu">
+  <div class="container">
+    <nav class="fs-links">
+      <a href="#servicios" onclick="closeMenu()"><span class="fs-num">01</span>Servicios</a>
+      <a href="#como-funciona" onclick="closeMenu()"><span class="fs-num">02</span>Cómo funciona</a>
+      <a href="#precios" onclick="closeMenu()"><span class="fs-num">03</span>Precios</a>
+      <a href="#casos" onclick="closeMenu()"><span class="fs-num">04</span>Demo en vivo</a>
+      <a href="#nosotros" onclick="closeMenu()"><span class="fs-num">05</span>Sobre nosotros</a>
+      <a href="#contacto" onclick="closeMenu()"><span class="fs-num">06</span>Contacto</a>
+    </nav>
+    <div class="fs-footer">
+      <span>hola@ipscaleai.com</span>
+      <span>España · Trabajamos en remoto con cualquier negocio</span>
+    </div>
+  </div>
+</div>
+
+<section class="hero" id="home">
+  <div class="grid-bg"></div>
+  <div class="spotlight" id="heroSpotlight"></div>
+  <div class="glow-orb" style="width:420px;height:420px;background:var(--accent-primary);top:-120px;right:-80px;"></div>
+  <div class="glow-orb" style="width:300px;height:300px;background:var(--accent-secondary);bottom:-100px;left:10%;animation-delay:2s;"></div>
+  <div class="speed-lines">
+    <span style="width:60%;top:15%;left:-10%;"></span>
+    <span style="width:40%;top:35%;left:20%;"></span>
+    <span style="width:70%;top:60%;left:-5%;" class="orange"></span>
+    <span style="width:35%;top:80%;left:40%;"></span>
+  </div>
+  <div class="container hero-inner">
+    <span class="hero-badge">Agentes de IA listos para producción</span>
+    <h1 class="reveal">La IA que trabaja <span>mientras tú vendes.</span></h1>
+    <p class="lead reveal">Respuestas al instante. Citas que se agendan solas. Cero esfuerzo para ti. Un agente de IA atiende WhatsApp, Instagram y email por ti, para que tú te dediques a cerrar ventas.</p>
+    <div class="hero-ctas reveal">
+      <a href="#contacto" class="btn-primary glow-pulse">Reserva una demo →</a>
+      <a href="#precios" class="btn-secondary">Ver planes y precios</a>
+    </div>
+    <div class="hero-stats reveal">
+      <div><strong>24/7</strong><span>Atención sin pausas</span></div>
+      <div><strong>0</strong><span>Leads sin respuesta</span></div>
+      <div><strong><span class="count" data-count="100">0</span>%</strong><span>Citas agendadas solas</span></div>
+      <div><strong>&lt;1min</strong><span>Tiempo de primera respuesta</span></div>
+    </div>
+  </div>
+  <div class="scroll-cue">
+    <span>Descubre más</span>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  </div>
+</section>
+
+<section class="services" id="servicios">
+  <span class="section-num">01</span>
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Qué hacemos</span>
+      <h2>Un agente. Todos tus canales. Cero fricción.</h2>
+      <p>Conectamos la IA a los canales por donde ya te llegan clientes y automatizamos el ciclo completo: responder, cualificar, agendar y derivar.</p>
+    </div>
+    <div class="services-grid">
+      <div class="card reveal">
+        <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+        <h3>Agentes de IA multicanal</h3>
+        <p>Un único asistente que atiende WhatsApp, Instagram y email con la misma personalidad y el mismo conocimiento de tu negocio.</p>
+        <span class="tag">→ Ver detalle</span>
+      </div>
+      <div class="card reveal">
+        <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></div>
+        <h3>Captación y gestión de leads</h3>
+        <p>De portales externos, redes sociales o formularios directamente a una base de datos organizada, sin intervención manual.</p>
+        <span class="tag">→ Ver detalle</span>
+      </div>
+      <div class="card reveal">
+        <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M9 16l2 2 4-4"/></svg></div>
+        <h3>Agendado automático de citas</h3>
+        <p>Integración directa con Google Calendar o el calendario que ya uses. Sin llamadas, sin idas y venidas por mensaje.</p>
+        <span class="tag">→ Ver detalle</span>
+      </div>
+      <div class="card reveal">
+        <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>Derivación inteligente a humano</h3>
+        <p>El agente sabe cuándo un caso se le escapa, como negociaciones o casos particulares, y avisa a tu equipo en el momento justo.</p>
+        <span class="tag">→ Ver detalle</span>
+      </div>
+      <div class="card reveal">
+        <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4v5h5M20 20v-5h-5"/><path d="M4.6 15A8 8 0 0 0 18.7 17.3M19.4 9A8 8 0 0 0 5.3 6.7"/></svg></div>
+        <h3>Automatización con n8n</h3>
+        <p>Conectamos las herramientas que ya usas, como Outlook, Sheets, Calendar o tu CRM, sin que tengas que cambiar de sistema.</p>
+        <span class="tag">→ Ver detalle</span>
+      </div>
+      <div class="card reveal">
+        <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></svg></div>
+        <h3>Implementación a medida</h3>
+        <p>Nada de bot genérico. Cada agente se entrena con tu inventario, tus FAQs y el tono real de tu negocio.</p>
+        <span class="tag">→ Ver detalle</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how" id="como-funciona">
+  <span class="section-num">02</span>
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Cómo funciona</span>
+      <h2>De cero a piloto automático en 4 pasos</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <h4>Conectamos tus canales</h4>
+        <p>WhatsApp, Instagram, email y formularios web, todo centralizado en un mismo sistema.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">02</div>
+        <h4>El agente aprende tu negocio</h4>
+        <p>Se entrena con tu inventario, tus FAQs y tu tono de voz real.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">03</div>
+        <h4>Responde y agenda solo</h4>
+        <p>Cualifica al cliente, resuelve dudas y agenda la cita directamente en tu calendario.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">04</div>
+        <h4>Tú intervienes solo si hace falta</h4>
+        <p>El agente deriva a tu equipo únicamente en negociaciones o casos particulares.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="case" id="casos">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Así trabaja tu agente</span>
+      <h2>Ningún lead sin respuesta, ninguna cita sin agendar</h2>
+    </div>
+    <div class="case-wrap reveal">
+      <div class="case-content">
+        <span class="eyebrow">Ejemplo real de conversación</span>
+        <h3>Responde, cualifica y agenda sin que tú tengas que intervenir</h3>
+        <p>Así es como funciona un agente IPScaleAI en la práctica: atiende la consulta en el momento en que llega, resuelve las dudas del cliente con la información real de tu negocio y agenda la cita directamente en tu calendario, derivando a una persona de tu equipo solo cuando el caso realmente lo requiere.</p>
+        <div class="case-results">
+          <div><strong>0</strong><span>leads sin respuesta</span></div>
+          <div><strong><span class="count" data-count="100">0</span>%</strong><span>citas agendadas por el agente</span></div>
+          <div><strong><span class="count" data-count="3">0</span></strong><span>canales unificados</span></div>
+          <div><strong>&lt;1min</strong><span>tiempo de respuesta</span></div>
+        </div>
+        <a href="#contacto" class="btn-primary">Quiero esto para mi negocio →</a>
+      </div>
+      <div class="case-visual">
+        <div class="chat-mock" id="chatDemo">
+          <div class="chat-head"><span class="dot"></span><strong style="font-size:13px;">Agente IPScaleAI</strong><span style="margin-left:auto;font-size:10.5px;color:var(--text-muted);letter-spacing:.06em;text-transform:uppercase;">En vivo</span></div>
+          <div class="chat-body">
+            <div class="bubble in">Hola, ¿tenéis disponibilidad esta semana?</div>
+            <div class="typing-indicator"><span></span><span></span><span></span></div>
+            <div class="bubble out">Sí, tenemos hueco. ¿Prefieres martes o jueves por la tarde?</div>
+            <div class="bubble in">Jueves a las 17:00</div>
+            <div class="typing-indicator"><span></span><span></span><span></span></div>
+            <div class="bubble out">Perfecto, cita reservada para el jueves a las 17:00h. Te llega la confirmación ahora mismo ✓</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="statement">
+  <div class="grid-bg"></div>
+  <div class="glow-orb" style="width:360px;height:360px;background:var(--accent-secondary);top:20%;right:5%;opacity:.18;"></div>
+  <div class="container">
+    <h2 class="reveal">Menos conversaciones <span class="hl">perdidas</span>.<br>Más negocio <span class="hl2">en marcha</span>.</h2>
+    <p class="reveal">Cada minuto sin responder es un cliente que se va a la competencia. Un agente IPScaleAI no descansa, no se distrae y no deja a nadie esperando.</p>
+  </div>
+</section>
+
+<section class="sectors">
+  <span class="section-num">04</span>
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Expandible a cualquier sector</span>
+      <h2>Un mismo sistema para cualquier negocio con atención repetitiva</h2>
+    </div>
+    <div class="sector-marquee reveal">
+      <div class="sector-track">
+        <div class="sector-chip">Concesionarios</div>
+        <div class="sector-chip">Talleres</div>
+        <div class="sector-chip">Hoteles</div>
+        <div class="sector-chip">Clínicas</div>
+        <div class="sector-chip">Inmobiliarias</div>
+        <div class="sector-chip">Retail y ecommerce</div>
+        <div class="sector-chip">Servicios profesionales</div>
+        <div class="sector-chip">Y más...</div>
+        <div class="sector-chip">Concesionarios</div>
+        <div class="sector-chip">Talleres</div>
+        <div class="sector-chip">Hoteles</div>
+        <div class="sector-chip">Clínicas</div>
+        <div class="sector-chip">Inmobiliarias</div>
+        <div class="sector-chip">Retail y ecommerce</div>
+        <div class="sector-chip">Servicios profesionales</div>
+        <div class="sector-chip">Y más...</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="precios">
+  <span class="section-num">05</span>
+  <div class="glow-orb" style="width:380px;height:380px;background:var(--accent-primary);top:10%;left:-10%;opacity:.15;"></div>
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Planes</span>
+      <h2>Elige el nivel de automatización que necesitas</h2>
+      <p>Un pago único de instalación más una mensualidad de mantenimiento, sin sorpresas, más una opción a medida para negocios con necesidades específicas. Sin permanencia forzosa.</p>
+    </div>
+
+    <div class="pricing-grid">
+
+      <div class="plan reveal">
+        <div class="plan-name">Esencial</div>
+        <div class="plan-tagline">Para dar el primer paso y dejar de perder leads básicos.</div>
+        <div class="plan-price"><span class="amount">450€</span><span class="period">instalación</span></div>
+        <div class="plan-maintenance"><span class="m-amount">+149€</span><span class="m-label">/ mes mantenimiento</span></div>
+        <div class="plan-note">Ideal para negocios que empiezan a automatizar su atención.</div>
+        <ul class="plan-features">
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> 1 canal de atención (WhatsApp o Instagram)</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Agente entrenado con tus FAQs y catálogo</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Captación de leads desde formulario web</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Agendado automático en 1 calendario</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Hasta 300 conversaciones/mes</li>
+          <li class="dim"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6L6 18M6 6l12 12"/></svg> Sin automatizaciones n8n incluidas</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Soporte por email, respuesta en 48h</li>
+        </ul>
+        <a href="#contacto" class="btn-secondary">Empezar con Esencial</a>
+      </div>
+
+      <div class="plan popular reveal">
+        <div class="plan-badge">Más elegido</div>
+        <div class="plan-name">Avanzado</div>
+        <div class="plan-tagline">El punto justo entre precio y todo lo que automatizas.</div>
+        <div class="plan-price"><span class="amount">1.250€</span><span class="period">instalación</span></div>
+        <div class="plan-maintenance"><span class="m-amount">+349€</span><span class="m-label">/ mes mantenimiento</span></div>
+        <div class="plan-note">Para negocios con volumen medio-alto de clientes y varios canales.</div>
+        <ul class="plan-features">
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> 3 canales unificados: WhatsApp + Instagram + Email</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Captación desde portales externos y redes sociales</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Agendado multi-calendario / multi-sede</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Derivación inteligente a humano con contexto</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> 2 automatizaciones n8n (CRM, Sheets, Outlook...)</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Hasta 1.500 conversaciones/mes</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Soporte prioritario, respuesta en 24h + informe mensual</li>
+        </ul>
+        <a href="#contacto" class="btn-primary">Elegir Avanzado</a>
+      </div>
+
+      <div class="plan reveal">
+        <div class="plan-name">Elite</div>
+        <div class="plan-tagline">Para negocios con varias sedes o alto volumen de clientes.</div>
+        <div class="plan-price"><span class="amount">2.500€</span><span class="period">instalación</span></div>
+        <div class="plan-maintenance"><span class="m-amount">+649€</span><span class="m-label">/ mes mantenimiento</span></div>
+        <div class="plan-note">Máxima cobertura, máxima automatización, cero cuellos de botella.</div>
+        <ul class="plan-features">
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Canales ilimitados y varios agentes (sede/idioma)</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Automatizaciones n8n ilimitadas en todo tu stack</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Integración completa con tu CRM</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Conversaciones ilimitadas</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Entrenamiento y ajuste continuo mensual</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Gestor de cuenta dedicado</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Soporte prioritario 7 días, respuesta &lt;4h + dashboard en tiempo real</li>
+        </ul>
+        <a href="#contacto" class="btn-secondary">Elegir Elite</a>
+      </div>
+
+      <div class="plan custom reveal">
+        <div class="plan-name">A Medida</div>
+        <div class="plan-tagline">Para grupos, múltiples marcas o integraciones muy específicas.</div>
+        <div class="plan-price"><span class="amount custom">Instalación a consultar</span></div>
+        <div class="plan-maintenance"><span class="m-amount" style="font-size:14px;">Mantenimiento a consultar</span></div>
+        <div class="plan-note">Consultoría inicial gratuita, propuesta cerrada según alcance real.</div>
+        <ul class="plan-features">
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Múltiples marcas o unidades de negocio</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Desarrollo de funcionalidades exclusivas</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Integraciones con sistemas propietarios</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Volumen enterprise sin límites</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> SLA y condiciones negociadas a medida</li>
+        </ul>
+        <a href="#contacto" class="btn-primary">Hablar con un experto</a>
+      </div>
+
+    </div>
+
+    <p class="pricing-foot reveal">El pago de instalación es único e incluye la implementación y el entrenamiento del agente; la mensualidad cubre hosting, soporte y mantenimiento continuo. <strong>Sin permanencia mínima</strong>: cancelas la mensualidad cuando quieras.</p>
+  </div>
+</section>
+
+<section class="services-detail" id="servicios-detalle">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">En detalle</span>
+      <h2>Los 6 pilares de IPScaleAI</h2>
+    </div>
+
+    <div class="detail-row reveal">
+      <div class="detail-num">01</div>
+      <div>
+        <h3>Agentes de IA multicanal</h3>
+        <p>Tus clientes te escriben por WhatsApp, te comentan en Instagram y te mandan un email, y esperan la misma calidad de respuesta en todos lados. Montamos un único agente que conoce tu negocio de arriba a abajo y contesta igual de bien en los tres canales, sin que notes la diferencia entre uno y otro.</p>
+      </div>
+    </div>
+    <div class="detail-row reveal">
+      <div class="detail-num">02</div>
+      <div>
+        <h3>Captación y gestión automática de leads</h3>
+        <p>Los leads que llegan de portales externos, redes sociales o de tus propios formularios se capturan y organizan automáticamente en una base de datos, sin que nadie tenga que copiar y pegar nada a mano. Ningún contacto se queda en un email perdido.</p>
+      </div>
+    </div>
+    <div class="detail-row reveal">
+      <div class="detail-num">03</div>
+      <div>
+        <h3>Agendado automático de citas</h3>
+        <p>El agente consulta la disponibilidad real de tu calendario (Google Calendar u otro) y agenda la cita ahí mismo, en la conversación, sin llamadas ni mensajes de ida y vuelta para cuadrar horarios.</p>
+      </div>
+    </div>
+    <div class="detail-row reveal">
+      <div class="detail-num">04</div>
+      <div>
+        <h3>Derivación inteligente a humano</h3>
+        <p>La IA sabe identificar cuándo una conversación necesita a una persona real, como una negociación, una reclamación o un caso fuera de lo común, y avisa a tu equipo en el momento exacto, con todo el contexto ya recopilado.</p>
+      </div>
+    </div>
+    <div class="detail-row reveal">
+      <div class="detail-num">05</div>
+      <div>
+        <h3>Automatización de procesos internos con n8n</h3>
+        <p>Conectamos las herramientas que ya usa tu equipo día a día, como Outlook, Google Sheets, Calendar o tu CRM, para que la información fluya sola entre sistemas. No hace falta que cambies de herramientas, solo que dejen de trabajar por separado.</p>
+      </div>
+    </div>
+    <div class="detail-row reveal">
+      <div class="detail-num">06</div>
+      <div>
+        <h3>Implementación a medida</h3>
+        <p>No entregamos un bot genérico descargado de una plantilla. Cada agente se entrena con tu inventario real, tus preguntas frecuentes reales y el tono con el que tu negocio habla a sus clientes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="nosotros">
+  <span class="section-num">07</span>
+  <div class="container about-grid">
+    <div class="reveal">
+      <span class="eyebrow">Sobre nosotros</span>
+      <h2>Automatización con IA aplicada, no genérica</h2>
+      <p>IPScaleAI nace de una convicción simple: la mayoría de negocios pierden clientes no por falta de demanda, sino por falta de respuesta a tiempo. No vendemos "inteligencia artificial" como concepto abstracto, construimos agentes que resuelven un problema muy concreto: que ningún cliente se quede esperando y que ninguna cita se pierda por el camino.</p>
+      <p>Trabajamos con negocios de sectores muy distintos, desde concesionarios hasta clínicas, inmobiliarias u hoteles, porque el problema de fondo es siempre el mismo: demasiadas conversaciones repetitivas y muy poco tiempo para atenderlas todas a tiempo. Construimos un sistema que se adapta a cada negocio, no al revés.</p>
+    </div>
+    <div class="about-values reveal">
+      <div class="value-box"><strong>Resultado, no tecnología</strong><span>Hablamos de leads atendidos y citas agendadas, no de jerga técnica.</span></div>
+      <div class="value-box"><strong>A medida siempre</strong><span>Cada agente se entrena con tu negocio real, nunca con una plantilla.</span></div>
+      <div class="value-box"><strong>Tus herramientas</strong><span>Nos integramos con lo que ya usas, no te obligamos a cambiar de sistema.</span></div>
+      <div class="value-box"><strong>Construido para producción</strong><span>Cada agente se pone a prueba a fondo antes de hablar con tu primer cliente real.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="cases-list">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Casos de éxito</span>
+      <h2>Sé de los primeros en automatizar tu atención con IPScaleAI</h2>
+    </div>
+    <div class="case-card future reveal">
+      <div class="badge-sector">Próximamente</div>
+      <div>
+        <h4>Tu negocio aquí</h4>
+        <p>Concesionarios, talleres, hoteles, clínicas, inmobiliarias o cualquier negocio con atención repetitiva. El mismo sistema, adaptado a ti. Reserva una demo y sé el próximo caso de éxito.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Preguntas frecuentes</span>
+      <h2>Lo que todo el mundo pregunta antes de empezar</h2>
+    </div>
+    <div class="faq-list reveal">
+      <details class="faq-item">
+        <summary>¿Necesito saber de tecnología para usar esto?</summary>
+        <p>No. Tú sigues gestionando tu negocio como siempre; el agente trabaja detrás de tus canales habituales (WhatsApp, Instagram, email). Nosotros nos encargamos de toda la configuración técnica y te damos acceso a un panel simple para ver qué está pasando.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Cuánto tarda la implementación?</summary>
+        <p>Entre 1 y 3 semanas según el plan y la complejidad de tu negocio. En ese tiempo entrenamos al agente con tu inventario, tus FAQs reales y probamos las automatizaciones antes de ponerlo en producción.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Funciona con las herramientas que ya uso?</summary>
+        <p>Sí. Nos conectamos a WhatsApp Business, Instagram, Outlook/Gmail, Google Calendar y la mayoría de CRMs y hojas de cálculo habituales a través de n8n. No tienes que cambiar de sistema.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Hay permanencia mínima?</summary>
+        <p>No. Todos los planes son mensuales y puedes cancelar cuando quieras. Preferimos que te quedes porque funciona, no porque estés atado a un contrato.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Qué pasa si mi negocio no encaja exactamente en un plan?</summary>
+        <p>Para eso existe el plan A Medida: hacemos una consultoría inicial gratuita, entendemos tu caso concreto y te proponemos una solución y un precio cerrado según el alcance real.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="speed-lines">
+    <span style="width:50%;top:20%;left:10%;"></span>
+    <span style="width:60%;top:70%;left:-10%;" class="orange"></span>
+  </div>
+  <div class="container">
+    <h2 class="reveal">¿Listo para dejar de perder clientes?</h2>
+    <p class="reveal">Reserva una demo de 20 minutos y te enseñamos exactamente cómo quedaría funcionando en tu negocio.</p>
+    <div class="hero-ctas reveal">
+      <a href="#contacto" class="btn-primary">Reserva tu demo gratuita →</a>
+      <a href="#precios" class="btn-secondary">Ver planes</a>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contacto">
+  <span class="section-num">10</span>
+  <div class="container">
+    <div class="contact-wrap reveal">
+      <div class="contact-info">
+        <span class="eyebrow">Contacto</span>
+        <h2>Hablemos de tu negocio</h2>
+        <p>Cuéntanos qué canales usas y qué se te está escapando ahora mismo. Te devolvemos una propuesta concreta, no una llamada de ventas genérica. Y si prefieres, agenda la demo directamente con el mismo sistema que vendemos.</p>
+        <div class="contact-item"><span class="ic">✉</span> hola@ipscaleai.com</div>
+        <div class="contact-item"><span class="ic">📍</span> España · Trabajamos en remoto con cualquier negocio</div>
+        <div class="contact-item"><span class="ic">⏱</span> Respuesta en menos de 24h</div>
+      </div>
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <div class="field">
+          <label>Nombre</label>
+          <input type="text" required placeholder="Tu nombre">
+        </div>
+        <div class="field">
+          <label>Email</label>
+          <input type="email" required placeholder="tu@email.com">
+        </div>
+        <div class="field">
+          <label>Negocio / Sector</label>
+          <select>
+            <option>Selecciona tu sector</option>
+            <option>Concesionario de coches</option>
+            <option>Taller</option>
+            <option>Hotel</option>
+            <option>Clínica</option>
+            <option>Inmobiliaria</option>
+            <option>Retail / ecommerce</option>
+            <option>Servicios profesionales</option>
+            <option>Otro</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Plan que te interesa</label>
+          <select>
+            <option>Esencial (450€ instalación + 149€/mes)</option>
+            <option>Avanzado (1.250€ instalación + 349€/mes)</option>
+            <option>Elite (2.500€ instalación + 649€/mes)</option>
+            <option>A Medida (a consultar)</option>
+            <option>Aún no lo sé, quiero que me asesoréis</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Cuéntanos qué necesitas</label>
+          <textarea placeholder="Ej: perdemos leads de Instagram y WhatsApp que nadie contesta a tiempo..."></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="width:100%;justify-content:center;">Reserva tu demo →</button>
+        <p class="form-note">Al enviar aceptas que te contactemos para gestionar tu solicitud. Sin spam, nunca.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="#home" class="logo" style="margin-bottom:14px;display:flex;justify-content:flex-start;font-size:18px;">
+          <img src="ipscaleai-icon.png" alt="IPScaleAI" class="logo-mark" style="height:32px;">
+          IPScaleAI
+        </a>
+        <p style="color:var(--text-secondary);font-size:14px;max-width:280px;">Agentes de IA y automatizaciones con n8n para negocios que no quieren perder ni un cliente más.</p>
+      </div>
+      <div>
+        <h5>Servicios</h5>
+        <ul>
+          <li><a href="#servicios">Agentes multicanal</a></li>
+          <li><a href="#servicios">Gestión de leads</a></li>
+          <li><a href="#servicios">Agendado de citas</a></li>
+          <li><a href="#servicios">Automatización n8n</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Empresa</h5>
+        <ul>
+          <li><a href="#precios">Precios</a></li>
+          <li><a href="#nosotros">Sobre nosotros</a></li>
+          <li><a href="#casos">Casos de éxito</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contacto</h5>
+        <ul>
+          <li><a href="mailto:hola@ipscaleai.com">hola@ipscaleai.com</a></li>
+          <li><a href="#contacto">Reserva una demo</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 IPScaleAI. Todos los derechos reservados.</span>
+      <span>Hecho con el mismo sistema que vendemos.</span>
+    </div>
+  </div>
+</footer>
+
+<a href="#contacto" class="float-cta">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  <span>Reserva tu demo</span>
+</a>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<script>
+/* ---- scroll reveal with stagger ---- */
+const groupSelectors = ['.services-grid','.steps','.pricing-grid','.about-values','.plan-features','.sector-track'];
+document.querySelectorAll('.reveal').forEach(el=>{
+  const parent = el.parentElement;
+  const siblings = parent ? Array.from(parent.children).filter(c=>c.classList.contains('reveal')) : [];
+  const idx = siblings.indexOf(el);
+  if(idx > 0) el.style.transitionDelay = Math.min(idx*90,450)+'ms';
+});
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); }
+  });
+},{threshold:0.15});
+revealEls.forEach(el=>io.observe(el));
+
+/* ---- animated counters ---- */
+document.querySelectorAll('.count').forEach(el=>{
+  const target = parseFloat(el.dataset.count);
+  const counterIO = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        let start = null; const duration = 1200;
+        function step(ts){
+          if(!start) start = ts;
+          const progress = Math.min((ts-start)/duration,1);
+          el.textContent = Math.floor(progress*target);
+          if(progress<1) requestAnimationFrame(step); else el.textContent = target;
+        }
+        requestAnimationFrame(step);
+        counterIO.unobserve(el);
+      }
+    });
+  },{threshold:0.5});
+  counterIO.observe(el);
+});
+
+/* ---- scroll progress bar ---- */
+const progressBar = document.getElementById('scrollProgress');
+function updateProgress(){
+  const h = document.documentElement;
+  const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+  progressBar.style.width = scrolled + '%';
+}
+document.addEventListener('scroll', updateProgress, {passive:true});
+updateProgress();
+
+/* ---- header shrink + auto-hide on scroll ---- */
+const header = document.querySelector('header');
+let lastScrollY = window.scrollY;
+function updateHeader(){
+  const y = window.scrollY;
+  if(y > 12) header.classList.add('scrolled');
+  else header.classList.remove('scrolled');
+
+  if(y > lastScrollY && y > 220){ header.classList.add('nav-hidden'); }
+  else { header.classList.remove('nav-hidden'); }
+  lastScrollY = y;
+}
+document.addEventListener('scroll', updateHeader, {passive:true});
+updateHeader();
+
+/* ---- active nav link on scroll ---- */
+const navAnchors = document.querySelectorAll('.fs-links a[href^="#"]');
+const navMap = {};
+navAnchors.forEach(a=>{ navMap[a.getAttribute('href').slice(1)] = a; });
+const navSections = Object.keys(navMap).map(id=>document.getElementById(id)).filter(Boolean);
+const navIO = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      navAnchors.forEach(a=>a.classList.remove('active'));
+      const link = navMap[e.target.id];
+      if(link) link.classList.add('active');
+    }
+  });
+},{rootMargin:'-40% 0px -50% 0px'});
+navSections.forEach(s=>navIO.observe(s));
+
+/* ---- hero cursor spotlight ---- */
+const heroEl = document.getElementById('home');
+const spotlight = document.getElementById('heroSpotlight');
+if(heroEl && spotlight){
+  heroEl.addEventListener('mousemove', (e)=>{
+    const rect = heroEl.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    spotlight.style.setProperty('--mx', x+'%');
+    spotlight.style.setProperty('--my', y+'%');
+  });
+}
+
+/* ---- card / plan tilt effect ---- */
+function applyTilt(el, intensity){
+  el.classList.add('tilt');
+  el.addEventListener('mousemove', (e)=>{
+    const rect = el.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    const base = el.classList.contains('popular') ? 'scale(1.04)' : '';
+    el.style.transform = `${base} perspective(700px) rotateX(${(-y*intensity)}deg) rotateY(${(x*intensity)}deg) translateY(-4px)`;
+  });
+  el.addEventListener('mouseleave', ()=>{
+    el.style.transform = '';
+  });
+}
+document.querySelectorAll('.services-grid .card').forEach(el=>applyTilt(el,6));
+document.querySelectorAll('.pricing-grid .plan').forEach(el=>applyTilt(el,3));
+
+/* ---- animated chat demo ---- */
+const chatDemo = document.getElementById('chatDemo');
+if(chatDemo){
+  const items = Array.from(chatDemo.querySelectorAll('.chat-body > *'));
+  function playChat(){
+    items.forEach(el=>el.classList.remove('show'));
+    let t = 400;
+    items.forEach(el=>{
+      if(el.classList.contains('typing-indicator')){
+        setTimeout(()=>el.classList.add('show'), t);
+        t += 1300;
+        setTimeout(()=>el.classList.remove('show'), t);
+      } else {
+        setTimeout(()=>el.classList.add('show'), t);
+        t += 700;
+      }
+    });
+  }
+  const chatIO = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ playChat(); chatIO.unobserve(chatDemo); }
+    });
+  },{threshold:0.4});
+  chatIO.observe(chatDemo);
+}
+
+function toggleMenu(){
+  document.getElementById('fsMenu').classList.toggle('open');
+  document.getElementById('menuToggle').classList.toggle('is-open');
+  document.body.classList.toggle('menu-open');
+}
+function closeMenu(){
+  document.getElementById('fsMenu').classList.remove('open');
+  document.getElementById('menuToggle').classList.remove('is-open');
+  document.body.classList.remove('menu-open');
+}
+
+function handleSubmit(e){
+  e.preventDefault();
+  const btn = e.target.querySelector('button');
+  const original = btn.textContent;
+  btn.textContent = '¡Recibido! Te contactamos pronto ✓';
+  btn.style.background = '#3ddc84';
+  setTimeout(()=>{ e.target.reset(); btn.textContent = original; btn.style.background=''; },2800);
+}
+</script>
+</body>
+</html>
