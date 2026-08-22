@@ -669,6 +669,22 @@ footer{border-top:1px solid var(--border);padding:48px 0 100px;}
   .detail-row{grid-template-columns:50px 1fr;}
   .float-cta span{display:none;}
   .float-cta{padding:16px;}
+  .case-card{grid-template-columns:1fr;text-align:left;}
+  .case-card .badge-sector{justify-self:start;width:fit-content;}
+  .about-values{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:28px;}
+}
+@media(max-width:640px){
+  section,.cases-list,.faq,.contact{padding:64px 0;}
+  .final-cta{padding:64px 0;}
+  footer{padding:40px 0 90px;}
+  .hero{padding-top:120px;padding-bottom:60px;}
+}
+@media(max-width:400px){
+  nav{padding:16px 14px;}
+  .logo{font-size:17px;gap:6px;}
+  .logo-mark{height:34px;}
+  .nav-cta{padding:8px 12px;font-size:10.5px;letter-spacing:.04em;}
 }
 </style>
 </head>
@@ -1130,18 +1146,22 @@ footer{border-top:1px solid var(--border);padding:48px 0 100px;}
         <div class="contact-item"><span class="ic">📍</span> España · Trabajamos en remoto con cualquier negocio</div>
         <div class="contact-item"><span class="ic">⏱</span> Respuesta en menos de 24h</div>
       </div>
-      <form class="contact-form" onsubmit="handleSubmit(event)">
+      <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
+        <input type="hidden" name="_subject" value="Nueva solicitud desde ipscaleai.com">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
         <div class="field">
           <label>Nombre</label>
-          <input type="text" required placeholder="Tu nombre">
+          <input type="text" name="nombre" required placeholder="Tu nombre">
         </div>
         <div class="field">
           <label>Email</label>
-          <input type="email" required placeholder="tu@email.com">
+          <input type="email" name="email" required placeholder="tu@email.com">
         </div>
         <div class="field">
           <label>Negocio / Sector</label>
-          <select>
+          <select name="sector">
             <option>Selecciona tu sector</option>
             <option>Concesionario de coches</option>
             <option>Taller</option>
@@ -1155,7 +1175,7 @@ footer{border-top:1px solid var(--border);padding:48px 0 100px;}
         </div>
         <div class="field">
           <label>Plan que te interesa</label>
-          <select>
+          <select name="plan">
             <option>Esencial (450€ instalación + 149€/mes)</option>
             <option>Avanzado (1.250€ instalación + 349€/mes)</option>
             <option>Elite (2.500€ instalación + 649€/mes)</option>
@@ -1165,10 +1185,10 @@ footer{border-top:1px solid var(--border);padding:48px 0 100px;}
         </div>
         <div class="field">
           <label>Cuéntanos qué necesitas</label>
-          <textarea placeholder="Ej: perdemos leads de Instagram y WhatsApp que nadie contesta a tiempo..."></textarea>
+          <textarea name="mensaje" placeholder="Ej: perdemos leads de Instagram y WhatsApp que nadie contesta a tiempo..."></textarea>
         </div>
         <button type="submit" class="btn-primary" style="width:100%;justify-content:center;">Reserva tu demo →</button>
-        <p class="form-note">Al enviar aceptas que te contactemos para gestionar tu solicitud. Sin spam, nunca.</p>
+        <p class="form-note" id="formNote">Al enviar aceptas que te contactemos para gestionar tu solicitud. Sin spam, nunca.</p>
       </form>
     </div>
   </div>
@@ -1372,11 +1392,34 @@ function closeMenu(){
 
 function handleSubmit(e){
   e.preventDefault();
-  const btn = e.target.querySelector('button');
+  const form = e.target;
+  const btn = form.querySelector('button');
+  const note = document.getElementById('formNote');
   const original = btn.textContent;
-  btn.textContent = '¡Recibido! Te contactamos pronto ✓';
-  btn.style.background = '#3ddc84';
-  setTimeout(()=>{ e.target.reset(); btn.textContent = original; btn.style.background=''; },2800);
+  const originalNote = note ? note.textContent : '';
+  btn.disabled = true;
+  btn.textContent = 'Enviando...';
+
+  fetch('https://formsubmit.co/ajax/ignasi@ipscaleai.com', {
+    method: 'POST',
+    headers: { 'Accept': 'application/json' },
+    body: new FormData(form)
+  })
+  .then(res => res.ok ? res.json() : Promise.reject())
+  .then(() => {
+    btn.textContent = '¡Recibido! Te contactamos pronto ✓';
+    btn.style.background = '#3ddc84';
+    setTimeout(()=>{ form.reset(); btn.disabled = false; btn.textContent = original; btn.style.background=''; },2800);
+  })
+  .catch(() => {
+    btn.disabled = false;
+    btn.textContent = original;
+    if(note){
+      note.textContent = 'No se pudo enviar. Escríbenos directamente a hola@ipscaleai.com.';
+      note.style.color = '#FF5A36';
+      setTimeout(()=>{ note.textContent = originalNote; note.style.color=''; },5000);
+    }
+  });
 }
 </script>
 </body>
