@@ -246,6 +246,7 @@ header.scrolled nav{padding:15px 24px;}
   transition:background .2s ease, transform .2s ease;white-space:nowrap;
 }
 .nav-cta:hover{background:var(--accent-primary-hover);transform:translateY(-1px);}
+.nav-cta-short{display:none;}
 
 /* FULLSCREEN MENU */
 .fullscreen-menu{
@@ -681,6 +682,8 @@ footer{border-top:1px solid var(--border);padding:48px 0 100px;}
 }
 @media(max-width:480px){
   .menu-toggle .menu-label{display:none;}
+  .nav-cta-full{display:none;}
+  .nav-cta-short{display:inline;}
 }
 @media(max-width:560px){
   .services-grid{grid-template-columns:1fr;}
@@ -700,7 +703,14 @@ footer{border-top:1px solid var(--border);padding:48px 0 100px;}
   section,.cases-list,.faq,.contact{padding:64px 0;}
   .final-cta{padding:64px 0;}
   footer{padding:40px 0 90px;}
-  .hero{padding-top:120px;padding-bottom:60px;}
+  .hero{
+    padding-top:120px;padding-bottom:60px;
+    background-image:
+      linear-gradient(180deg, rgba(11,12,15,0.94), rgba(11,12,15,0.98) 60%, var(--bg-primary) 100%),
+      url('ipscaleai-logo-full.png');
+    background-size:220% auto;
+    background-position:center 15%;
+  }
 }
 @media(max-width:400px){
   nav{padding:16px 14px;}
@@ -722,7 +732,7 @@ footer{border-top:1px solid var(--border);padding:48px 0 100px;}
       <img src="ipscaleai-icon.png" alt="IPScaleAI" class="logo-mark">
       IPScale<span style="color:var(--accent-primary)">AI</span>
     </a>
-    <a href="#contacto" class="nav-cta">Reserva una demo</a>
+    <a href="#contacto" class="nav-cta"><span class="nav-cta-full">Reserva una demo</span><span class="nav-cta-short">Demo</span></a>
   </nav>
 </header>
 
