@@ -1279,10 +1279,17 @@ footer{border-top:1px solid var(--border);padding:48px 0 100px;}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script>
 /* ---- premium hero entrance (GSAP, con fallback si no carga) ---- */
-if(window.gsap){
+const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(window.gsap && !prefersReducedMotion){
   (function(){
     const h1 = document.querySelector('.hero h1');
     if(!h1) return;
+    /* seguro: si por lo que sea la animación no termina (pestaña en segundo plano, error, etc.), forzamos visibilidad a los 3.5s */
+    setTimeout(()=>{
+      document.querySelectorAll('.hero h1 .word, .hero .hero-badge, .hero p.lead, .hero .hero-ctas, .hero .hero-stats').forEach(el=>{
+        el.style.opacity = '1'; el.style.transform = 'none';
+      });
+    }, 3500);
     function splitIntoWords(el){
       Array.from(el.childNodes).forEach(child=>{
         if(child.nodeType === 3){
