@@ -540,6 +540,27 @@ header.scrolled nav{padding:15px 24px;}
 .plan-features li.dim{color:var(--text-muted);}
 .plan .btn-primary,.plan .btn-secondary{width:100%;justify-content:center;}
 .plan.custom{background:var(--bg-surface-raised);border:1px dashed var(--border-strong);}
+.plan.flagship{
+  background:linear-gradient(180deg, rgba(255,90,54,0.08), var(--bg-surface) 45%);
+  border:1px solid var(--accent-secondary);
+  box-shadow:0 0 0 1px rgba(255,90,54,0.18), 0 24px 60px rgba(255,90,54,0.14);
+  animation:flagshipGlow 3.6s ease-in-out infinite;
+}
+@keyframes flagshipGlow{
+  0%,100%{box-shadow:0 0 0 1px rgba(255,90,54,0.18), 0 24px 60px rgba(255,90,54,0.14);}
+  50%{box-shadow:0 0 0 1px rgba(255,90,54,0.36), 0 28px 70px rgba(255,90,54,0.26);}
+}
+.flagship-badge{background:var(--accent-secondary) !important;}
+.plan.flagship .btn-primary{background:var(--accent-secondary);}
+.plan.flagship .btn-primary:hover{background:var(--accent-secondary-hover);}
+.custom-banner{
+  margin-top:24px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+  background:var(--bg-surface-raised);border:1px dashed var(--border-strong);border-radius:14px;
+  padding:26px 32px;position:relative;z-index:1;
+}
+.custom-banner-text p{color:var(--text-secondary);font-size:13.5px;max-width:640px;margin-top:6px;}
+.custom-banner-cta{display:flex;align-items:center;gap:18px;flex-shrink:0;}
+.custom-banner-price{color:var(--text-muted);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;}
 .pricing-foot{text-align:center;margin-top:36px;color:var(--text-secondary);font-size:14px;position:relative;z-index:1;}
 .pricing-foot strong{color:var(--accent-secondary);}
 
@@ -960,16 +981,16 @@ footer{border-top:1px solid var(--border);padding:48px 0 100px;}
       <div class="plan reveal">
         <div class="plan-name">Esencial</div>
         <div class="plan-tagline">Para dar el primer paso y dejar de perder leads básicos.</div>
-        <div class="plan-price"><span class="amount">450€</span><span class="period">instalación</span></div>
-        <div class="plan-maintenance"><span class="m-amount">+149€</span><span class="m-label">/ mes mantenimiento</span></div>
+        <div class="plan-price"><span class="amount">900€</span><span class="period">instalación</span></div>
+        <div class="plan-maintenance"><span class="m-amount">+249€</span><span class="m-label">/ mes mantenimiento</span></div>
         <div class="plan-note">Ideal para negocios que empiezan a automatizar su atención.</div>
         <ul class="plan-features">
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> 1 canal de atención (WhatsApp o Instagram)</li>
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Agente entrenado con tus FAQs y catálogo</li>
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Captación de leads desde formulario web</li>
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Agendado automático en 1 calendario</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Reactivación automática de leads fríos</li>
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Hasta 300 conversaciones/mes</li>
-          <li class="dim"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6L6 18M6 6l12 12"/></svg> Sin automatizaciones n8n incluidas</li>
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Soporte por email, respuesta en 48h</li>
         </ul>
         <a href="#contacto" class="btn-secondary">Empezar con Esencial</a>
@@ -979,15 +1000,17 @@ footer{border-top:1px solid var(--border);padding:48px 0 100px;}
         <div class="plan-badge">Más elegido</div>
         <div class="plan-name">Avanzado</div>
         <div class="plan-tagline">El punto justo entre precio y todo lo que automatizas.</div>
-        <div class="plan-price"><span class="amount">1.250€</span><span class="period">instalación</span></div>
-        <div class="plan-maintenance"><span class="m-amount">+349€</span><span class="m-label">/ mes mantenimiento</span></div>
+        <div class="plan-price"><span class="amount">2.200€</span><span class="period">instalación</span></div>
+        <div class="plan-maintenance"><span class="m-amount">+549€</span><span class="m-label">/ mes mantenimiento</span></div>
         <div class="plan-note">Para negocios con volumen medio-alto de clientes y varios canales.</div>
         <ul class="plan-features">
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> 3 canales unificados: WhatsApp + Instagram + Email</li>
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Captación desde portales externos y redes sociales</li>
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Agendado multi-calendario / multi-sede</li>
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Derivación inteligente a humano con contexto</li>
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> 2 automatizaciones n8n (CRM, Sheets, Outlook...)</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Panel de control en tiempo real</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Motor de reactivación predictivo (no-shows, abandono)</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> 4 automatizaciones n8n (CRM, Sheets, Outlook...)</li>
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Hasta 1.500 conversaciones/mes</li>
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Soporte prioritario, respuesta en 24h + informe mensual</li>
         </ul>
@@ -995,39 +1018,52 @@ footer{border-top:1px solid var(--border);padding:48px 0 100px;}
       </div>
 
       <div class="plan reveal">
-        <div class="plan-name">Elite</div>
-        <div class="plan-tagline">Para negocios con varias sedes o alto volumen de clientes.</div>
-        <div class="plan-price"><span class="amount">2.500€</span><span class="period">instalación</span></div>
-        <div class="plan-maintenance"><span class="m-amount">+649€</span><span class="m-label">/ mes mantenimiento</span></div>
+        <div class="plan-name">Autopiloto</div>
+        <div class="plan-tagline">El negocio funciona solo, de verdad.</div>
+        <div class="plan-price"><span class="amount">5.500€</span><span class="period">instalación</span></div>
+        <div class="plan-maintenance"><span class="m-amount">+1.100€</span><span class="m-label">/ mes mantenimiento</span></div>
         <div class="plan-note">Máxima cobertura, máxima automatización, cero cuellos de botella.</div>
         <ul class="plan-features">
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Canales ilimitados y varios agentes (sede/idioma)</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Arquitectura multiagente: ventas, soporte y agenda coordinados</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Integración en tiempo real con tu CRM/ERP (stock y precios reales)</li>
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Automatizaciones n8n ilimitadas en todo tu stack</li>
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Integración completa con tu CRM</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Dashboard ejecutivo en tiempo real</li>
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Conversaciones ilimitadas</li>
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Entrenamiento y ajuste continuo mensual</li>
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Gestor de cuenta dedicado</li>
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Soporte prioritario 7 días, respuesta &lt;4h + dashboard en tiempo real</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Gestor de cuenta dedicado + optimización mensual</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Soporte prioritario 7 días, respuesta &lt;4h</li>
         </ul>
-        <a href="#contacto" class="btn-secondary">Elegir Elite</a>
+        <a href="#contacto" class="btn-secondary">Elegir Autopiloto</a>
       </div>
 
-      <div class="plan custom reveal">
-        <div class="plan-name">A Medida</div>
-        <div class="plan-tagline">Para grupos, múltiples marcas o integraciones muy específicas.</div>
-        <div class="plan-price"><span class="amount custom">Instalación a consultar</span></div>
-        <div class="plan-maintenance"><span class="m-amount" style="font-size:14px;">Mantenimiento a consultar</span></div>
-        <div class="plan-note">Consultoría inicial gratuita, propuesta cerrada según alcance real.</div>
+      <div class="plan flagship reveal">
+        <div class="plan-badge flagship-badge">Plazas limitadas</div>
+        <div class="plan-name">Imperio</div>
+        <div class="plan-tagline">Voz IA y exclusividad total en tu sector.</div>
+        <div class="plan-price"><span class="amount">Desde 9.000€</span><span class="period">instalación</span></div>
+        <div class="plan-maintenance"><span class="m-amount">+2.500€</span><span class="m-label">/ mes (o mensualidad + variable sobre resultados)</span></div>
+        <div class="plan-note">Todo lo de Autopiloto, más el nivel que nadie más ofrece.</div>
         <ul class="plan-features">
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Múltiples marcas o unidades de negocio</li>
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Desarrollo de funcionalidades exclusivas</li>
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Integraciones con sistemas propietarios</li>
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Volumen enterprise sin límites</li>
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> SLA y condiciones negociadas a medida</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Agente de voz IA: recibe y hace llamadas de teléfono</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Exclusividad: un solo cliente por sector y ciudad</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Comité de crecimiento mensual (estrategia, no solo soporte)</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> SLA con compensación económica si no se cumple</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Prioridad absoluta en desarrollo a medida</li>
         </ul>
-        <a href="#contacto" class="btn-primary">Hablar con un experto</a>
+        <a href="#contacto" class="btn-primary">Reservar mi sector</a>
       </div>
 
+    </div>
+
+    <div class="custom-banner reveal">
+      <div class="custom-banner-text">
+        <div class="plan-name">A Medida</div>
+        <p>Para grupos, múltiples marcas o integraciones muy específicas. Consultoría inicial gratuita, propuesta cerrada según alcance real: múltiples marcas, funcionalidades exclusivas, integraciones con sistemas propietarios, volumen enterprise sin límites y SLA negociado a medida.</p>
+      </div>
+      <div class="custom-banner-cta">
+        <span class="custom-banner-price">A consultar</span>
+        <a href="#contacto" class="btn-secondary">Hablar con un experto</a>
+      </div>
     </div>
 
     <p class="pricing-foot reveal">El pago de instalación es único e incluye la implementación y el entrenamiento del agente; la mensualidad cubre hosting, soporte y mantenimiento continuo. <strong>Sin permanencia mínima</strong>: cancelas la mensualidad cuando quieras.</p>
@@ -1208,9 +1244,10 @@ footer{border-top:1px solid var(--border);padding:48px 0 100px;}
         <div class="field">
           <label>Plan que te interesa</label>
           <select name="plan">
-            <option>Esencial (450€ instalación + 149€/mes)</option>
-            <option>Avanzado (1.250€ instalación + 349€/mes)</option>
-            <option>Elite (2.500€ instalación + 649€/mes)</option>
+            <option>Esencial (900€ instalación + 249€/mes)</option>
+            <option>Avanzado (2.200€ instalación + 549€/mes)</option>
+            <option>Autopiloto (5.500€ instalación + 1.100€/mes)</option>
+            <option>Imperio (desde 9.000€ instalación + 2.500€/mes)</option>
             <option>A Medida (a consultar)</option>
             <option>Aún no lo sé, quiero que me asesoréis</option>
           </select>
