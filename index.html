@@ -251,9 +251,10 @@ header.scrolled nav{padding:15px 24px;}
 /* FULLSCREEN MENU */
 .fullscreen-menu{
   position:fixed;inset:0;z-index:240;background:var(--bg-primary);
-  display:flex;flex-direction:column;justify-content:center;padding:100px 8vw 60px;
+  display:flex;flex-direction:column;justify-content:flex-start;padding:120px 8vw 60px;
   opacity:0;pointer-events:none;transform:translateY(-14px);
   transition:opacity .45s ease, transform .45s ease;
+  overflow-y:auto;
 }
 .fullscreen-menu.open{opacity:1;pointer-events:auto;transform:translateY(0);}
 .fs-links{display:flex;flex-direction:column;gap:2px;}
