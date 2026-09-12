@@ -272,6 +272,7 @@ header.scrolled nav{padding:15px 24px;}
 .fs-links a:nth-child(4){transition-delay:.2s;}
 .fs-links a:nth-child(5){transition-delay:.25s;}
 .fs-links a:nth-child(6){transition-delay:.3s;}
+.fs-links a:nth-child(7){transition-delay:.35s;}
 .fs-links a:last-child{border-bottom:1px solid var(--border);}
 .fs-links a .fs-num{font-family:'Inter';font-weight:600;font-size:13px;color:var(--accent-secondary);letter-spacing:.1em;}
 .fs-links a:hover{color:var(--accent-primary);}
@@ -762,11 +763,12 @@ footer{border-top:1px solid var(--border);padding:48px 0 100px;}
   <div class="container">
     <nav class="fs-links">
       <a href="#servicios" onclick="closeMenu()"><span class="fs-num">01</span>Servicios</a>
-      <a href="#como-funciona" onclick="closeMenu()"><span class="fs-num">02</span>Cómo funciona</a>
-      <a href="#precios" onclick="closeMenu()"><span class="fs-num">03</span>Precios</a>
-      <a href="#casos" onclick="closeMenu()"><span class="fs-num">04</span>Demo en vivo</a>
-      <a href="#nosotros" onclick="closeMenu()"><span class="fs-num">05</span>Sobre nosotros</a>
-      <a href="#contacto" onclick="closeMenu()"><span class="fs-num">06</span>Contacto</a>
+      <a href="/anuncios-ia.html" onclick="closeMenu()"><span class="fs-num">02</span>Anuncios con IA</a>
+      <a href="#como-funciona" onclick="closeMenu()"><span class="fs-num">03</span>Cómo funciona</a>
+      <a href="#precios" onclick="closeMenu()"><span class="fs-num">04</span>Precios</a>
+      <a href="/demo.html" target="_blank" onclick="closeMenu()"><span class="fs-num">05</span>Demo en vivo</a>
+      <a href="#nosotros" onclick="closeMenu()"><span class="fs-num">06</span>Sobre nosotros</a>
+      <a href="#contacto" onclick="closeMenu()"><span class="fs-num">07</span>Contacto</a>
     </nav>
     <div class="fs-footer">
       <span>hola@ipscaleai.com</span>
@@ -857,6 +859,17 @@ footer{border-top:1px solid var(--border);padding:48px 0 100px;}
         <span class="tag">→ Ver detalle</span>
       </div>
     </div>
+
+    <div class="group-label reveal secondary" style="margin-top:44px;">Para marcas de ecommerce con anuncios activos</div>
+    <div class="custom-banner reveal">
+      <div class="custom-banner-text">
+        <div class="plan-name">Anuncios con IA</div>
+        <p>Producimos las creatividades para tus anuncios de Meta e Instagram con inteligencia artificial: el mismo formato que ya te funciona, a una fracción del coste y sin esperar semanas a un creador.</p>
+      </div>
+      <div class="custom-banner-cta">
+        <a href="/anuncios-ia.html" class="btn-secondary">Ver este servicio →</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -909,7 +922,10 @@ footer{border-top:1px solid var(--border);padding:48px 0 100px;}
           <div><strong><span class="count" data-count="3">0</span></strong><span>canales unificados</span></div>
           <div><strong>&lt;1min</strong><span>tiempo de respuesta</span></div>
         </div>
-        <a href="#contacto" class="btn-primary">Quiero esto para mi negocio →</a>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;">
+          <a href="#contacto" class="btn-primary">Quiero esto para mi negocio →</a>
+          <a href="/demo.html" target="_blank" class="btn-secondary">Probar demo interactiva →</a>
+        </div>
       </div>
       <div class="case-visual">
         <div class="chat-mock" id="chatDemo">
